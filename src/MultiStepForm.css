@@ -1,0 +1,88 @@
+.form-container {
+    width: 50%;
+    margin: 0 auto;  /* Center the form */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensure everything inside is centered */
+  }
+  
+  h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px 0;
+    width: 100%;  /* Ensure label spans the full width */
+    max-width: 400px;
+    font-weight: bold;
+  }
+  
+  input, textarea, select {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;  /* Ensure inputs are not too wide */
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 15px 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .radio-group {
+    display: flex;
+    gap: 20px;  /* Space between the options */
+    margin-bottom: 20px;
+    justify-content: flex-start;
+  }
+  
+  .radio-group label {
+    display: inline-flex;
+    align-items: center;  /* Ensures the label text aligns with the radio button */
+    gap: 5px;  /* Adds a small gap between the button and the label text */
+    font-weight: normal;
+  }
+  
+  
+  
+  p {
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .checkbox-group {
+    display: inline-flex;
+    align-items: center;
+    
+  }
+  
+  
+  .checkbox-group label {
+    margin-left: 5px;  /* Adjust to position the label text very close to the checkbox */
+    font-weight: normal; /* Ensure label text styling is consistent */
+  }
+  
