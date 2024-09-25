@@ -122,28 +122,13 @@ const MultiStepForm = () => {
           
 
           <div className="checkbox-wrapper">
-          <p>Indica los estudios de laboratorio o gabinete de los que ingresas interpretación:</p>
-
-  {/* Checkbox for Aviso de Accidente */}
-  <div className="checkbox-group">
-    <input
-      type="checkbox"
-      checked={formData.avisoAccidente}
-      onChange={handleCheckboxChange('avisoAccidente')}
-    />
-    <label>Aviso de Accidente y/o Enfermedad</label>
-  </div>
-
-  {/* Checkbox for Informe Médico */}
-  <div className="checkbox-group">
-    <input
-      type="checkbox"
-      checked={formData.informeMedico}
-      onChange={handleCheckboxChange('informeMedico')}
-    />
-    <label>Informe Médico de los doctores</label>
-  </div>
+  <p>
+    Indica los estudios de laboratorio o gabinete de los que ingresas interpretación:<br />
+    1. Aviso de Accidente y/o Enfermedad<br />
+    2. Informe Médico de los doctores
+  </p>
 </div>
+
 
 
           {/* Input fields for Doctor 1 */}
@@ -268,11 +253,9 @@ const MultiStepForm = () => {
 
           <button onClick={prevStep}>Back</button>
           <button onClick={() => alert('Form submitted!')}>Submit</button>
+          <PdfFiller formData={formData} />
         </div>
       )}
-
-      {/* Add the PDF Filler Component */}
-      <PdfFiller formData={formData} />
     </div>
   );
 };
