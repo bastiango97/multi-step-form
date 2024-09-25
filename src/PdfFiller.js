@@ -1,5 +1,5 @@
 import React from 'react';
-import { PDFDocument, rgb } from 'pdf-lib'; // Import pdf-lib for PDF manipulation
+import { PDFDocument } from 'pdf-lib'; // Import pdf-lib for PDF manipulation
 import { saveAs } from 'file-saver'; // Import file-saver to download the PDF
 
 const PdfFiller = ({ formData }) => {
@@ -13,21 +13,25 @@ const PdfFiller = ({ formData }) => {
     // Load a PDFDocument from the existing PDF bytes
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-    // Get the first page of the document
-    const page = pdfDoc.getPages()[0];
+    // Get the form from the PDF
+    const form = pdfDoc.getForm();
 
-    // Set a default font and color (you can also customize this)
-    const { width, height } = page.getSize();
+    // Now fill the known fields programmatically
+    form.getTextField('Nombre (s)').setText(formData.nombre);
+    form.getTextField('Apellido Paterno').setText(formData.apellidoPaterno);
+    form.getTextField('Apellido Materno').setText(formData.apellidoMaterno);
+    form.getTextField('Contrante').setText(formData.contratante);
+    form.getTextField('Póliza').setText(formData.polizaActual);
+    form.getTextField('Diagnóstico').setText(formData.diagnostico);
+    //form.getTextField('Reclamaciones anteriores por este padecimiento').setText(formData.reclamacionesPrevias);
+    form.getTextField('No. Siniestro').setText(formData.numeroSiniestro);
 
-    // Add the text fields into the PDF (Note: for now, we'll just add some demo positions, replace them with actual coordinates)
-    page.drawText(formData.nombre, { x: 100, y: height - 100, size: 12, color: rgb(0, 0, 0) });
-    page.drawText(formData.apellidoPaterno, { x: 100, y: height - 120, size: 12, color: rgb(0, 0, 0) });
-    page.drawText(formData.apellidoMaterno, { x: 100, y: height - 140, size: 12, color: rgb(0, 0, 0) });
-    page.drawText(formData.contratante, { x: 100, y: height - 160, size: 12, color: rgb(0, 0, 0) });
-    page.drawText(formData.polizaActual, { x: 100, y: height - 180, size: 12, color: rgb(0, 0, 0) });
-    page.drawText(formData.diagnostico, { x: 100, y: height - 200, size: 12, color: rgb(0, 0, 0) });
-    
-    // You can continue adding other fields like "facturas", "reclamacionesPrevias", etc.
+    // Continue to fill out other fields as necessary using their field names
+    // Example:
+    form.getTextField('Dr. (a)-1').setText(formData.doctor1Nombre);
+    form.getTextField('Especialidad-1').setText(formData.doctor1Especialidad);
+    form.getTextField('Dr. (a)-2').setText(formData.doctor2Nombre);
+    form.getTextField('Especialidad-2').setText(formData.doctor2Especialidad);
 
     // Serialize the PDF document to bytes (returns a promise)
     const pdfBytes = await pdfDoc.save();
